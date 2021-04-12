@@ -2,7 +2,7 @@ const { getById, getAll } = require("./accounts-model");
 
 exports.checkAccountPayload = (req, res, next) => {
   const { name, budget } = req.body;
-  if (!name || !budget) {
+  if (name === undefined || budget === undefined) {
     res.status(400).json({ message: "name and budget are required" });
   } else if (typeof name !== "string") {
     res.status(400).json({ message: "name of account must be a string" });
